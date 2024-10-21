@@ -5,14 +5,14 @@
 class CloudfleetCli < Formula
   desc "Cloudfleet Command Line Interface"
   homepage "https://cloudfleet.ai"
-  version "0.3.10"
+  version "0.3.11"
 
   on_macos do
-    url "https://downloads.cloudfleet.ai/cli/0.3.10/cloudfleet_darwin_all.zip"
-    sha256 "5f9e7b5f17e79cb1170a078a427bd169c4cfdd30bf2a5ece1aa47f26771f88eb"
+    url "https://downloads.cloudfleet.ai/cli/0.3.11/cloudfleet_darwin_all.zip"
+    sha256 "573f4506cdad6ba7d37d9ff8c91761f5481749588eba3d07d6b4d1aca246769f"
 
     def install
-      bin.install "cloudfleet-darwin-all" => "cloudfleet"
+      bin.install "cloudfleet" => "cloudfleet"
 
       # Install bash completion
       output = Utils.popen_read("#{bin}/cloudfleet completion bash")
@@ -27,11 +27,11 @@ class CloudfleetCli < Formula
   on_linux do
     on_intel do
       if Hardware::CPU.is_64_bit?
-        url "https://downloads.cloudfleet.ai/cli/0.3.10/cloudfleet_linux_amd64.zip"
-        sha256 "73bc963227f4e1964c90ef9bee89d0f0723eb895af6f6ea98f6f972d187083d6"
+        url "https://downloads.cloudfleet.ai/cli/0.3.11/cloudfleet_linux_amd64.zip"
+        sha256 "93ee9f9f5779a561163d77e0ad059ff265af59fdd2f3214ec513ed0cc3f7fae2"
 
         def install
-          bin.install "cloudfleet-linux-amd64" => "cloudfleet"
+          bin.install "cloudfleet" => "cloudfleet"
 
           # Install bash completion
           output = Utils.popen_read("#{bin}/cloudfleet completion bash")
@@ -45,11 +45,11 @@ class CloudfleetCli < Formula
     end
     on_arm do
       if Hardware::CPU.is_64_bit?
-        url "https://downloads.cloudfleet.ai/cli/0.3.10/cloudfleet_linux_arm64.zip"
-        sha256 "9c58271226ce215671cebe22736fa27e6ab5642b2458cdf2d23c3439285d3fae"
+        url "https://downloads.cloudfleet.ai/cli/0.3.11/cloudfleet_linux_arm64.zip"
+        sha256 "af156fcdd627374d32b3ae62e409197d98c271d61432685f5d508f0302b625b8"
 
         def install
-          bin.install "cloudfleet-linux-arm64" => "cloudfleet"
+          bin.install "cloudfleet" => "cloudfleet"
 
           # Install bash completion
           output = Utils.popen_read("#{bin}/cloudfleet completion bash")
