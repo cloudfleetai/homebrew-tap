@@ -5,13 +5,13 @@
 class CloudfleetCli < Formula
   desc "Cloudfleet Command Line Interface"
   homepage "https://cloudfleet.ai"
-  version "0.6.0"
+  version "0.6.1"
 
   depends_on "kubernetes-cli" => :recommended
 
   on_macos do
-    url "https://downloads.cloudfleet.ai/cli/0.6.0/cloudfleet_darwin_all.zip"
-    sha256 "9f8a705cdb22a7f0aa47dff5d4c77f5dceac9b069cb7e0fec617ded027a90b83"
+    url "https://downloads.cloudfleet.ai/cli/0.6.1/cloudfleet_darwin_all.zip"
+    sha256 "3acf8b7911c6a2e5ce15ba52030838c7b4bf7bccff074ce7b8e1dc6c46175467"
 
     def install
       bin.install "cloudfleet" => "cloudfleet"
@@ -27,40 +27,34 @@ class CloudfleetCli < Formula
   end
 
   on_linux do
-    if Hardware::CPU.intel?
-      if Hardware::CPU.is_64_bit?
-        url "https://downloads.cloudfleet.ai/cli/0.6.0/cloudfleet_linux_amd64.zip"
-        sha256 "37a187952a925a0e2547cfde86bb1170d3b072bc02d99862bd2344a12dbc6e2a"
+    if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
+      url "https://downloads.cloudfleet.ai/cli/0.6.1/cloudfleet_linux_amd64.zip"
+      sha256 "93db22e9a132e5110487858369a3687917067d327b55b9f86b5c562a29097edd"
+      def install
+        bin.install "cloudfleet" => "cloudfleet"
 
-        def install
-          bin.install "cloudfleet" => "cloudfleet"
+        # Install bash completion
+        output = Utils.popen_read("#{bin}/cloudfleet completion bash")
+        (bash_completion/"cloudfleet").write output
 
-          # Install bash completion
-          output = Utils.popen_read("#{bin}/cloudfleet completion bash")
-          (bash_completion/"cloudfleet").write output
-
-          # Install zsh completion
-          output = Utils.popen_read("#{bin}/cloudfleet completion zsh")
-          (zsh_completion/"_cloudfleet").write output
-        end
+        # Install zsh completion
+        output = Utils.popen_read("#{bin}/cloudfleet completion zsh")
+        (zsh_completion/"_cloudfleet").write output
       end
     end
-    if Hardware::CPU.arm?
-      if Hardware::CPU.is_64_bit?
-        url "https://downloads.cloudfleet.ai/cli/0.6.0/cloudfleet_linux_arm64.zip"
-        sha256 "48a114564f58cfff30e4495d0841dbe72a88092c151dd975fa829a07a89eea31"
+    if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
+      url "https://downloads.cloudfleet.ai/cli/0.6.1/cloudfleet_linux_arm64.zip"
+      sha256 "86d060c7373e4bb2b81740df926d9a6f827ffb60e92d5c3fa5afe9ba8e3e8044"
+      def install
+        bin.install "cloudfleet" => "cloudfleet"
 
-        def install
-          bin.install "cloudfleet" => "cloudfleet"
+        # Install bash completion
+        output = Utils.popen_read("#{bin}/cloudfleet completion bash")
+        (bash_completion/"cloudfleet").write output
 
-          # Install bash completion
-          output = Utils.popen_read("#{bin}/cloudfleet completion bash")
-          (bash_completion/"cloudfleet").write output
-
-          # Install zsh completion
-          output = Utils.popen_read("#{bin}/cloudfleet completion zsh")
-          (zsh_completion/"_cloudfleet").write output
-        end
+        # Install zsh completion
+        output = Utils.popen_read("#{bin}/cloudfleet completion zsh")
+        (zsh_completion/"_cloudfleet").write output
       end
     end
   end
