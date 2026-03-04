@@ -5,15 +5,15 @@
 class CloudfleetCli < Formula
   desc "Cloudfleet Command Line Interface"
   homepage "https://cloudfleet.ai"
-  version "0.8.22"
+  version "0.8.23"
 
   depends_on "kubernetes-cli" => :recommended
 
   on_macos do
-    url "https://downloads.cloudfleet.ai/cli/0.8.22/cloudfleet_darwin_all.zip"
-    sha256 "620314d54708582dbd5d54ed4afcec5b1e74108d4e337ba19490efa66919cda6"
+    url "https://downloads.cloudfleet.ai/cli/0.8.23/cloudfleet_darwin_all.zip"
+    sha256 "9c9d9228aa2202d06ec60d08033bdb199d5d0aef9df021a59f8b9c6ac77725fc"
 
-    def install
+    define_method(:install) do
       bin.install "cloudfleet" => "cloudfleet"
 
       # Docker credential helper symlink
@@ -31,9 +31,9 @@ class CloudfleetCli < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://downloads.cloudfleet.ai/cli/0.8.22/cloudfleet_linux_amd64.zip"
-      sha256 "98583b704d9f78586c174ff66388b79b6f11ff48a5b23e38a32889ab44bcf6b2"
-      def install
+      url "https://downloads.cloudfleet.ai/cli/0.8.23/cloudfleet_linux_amd64.zip"
+      sha256 "7d4fe1c7def3196b4545d4b1bc56ed83a196d16f04423c9ccaaa445fc28e0acc"
+      define_method(:install) do
         bin.install "cloudfleet" => "cloudfleet"
 
         # Docker credential helper symlink
@@ -49,9 +49,9 @@ class CloudfleetCli < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://downloads.cloudfleet.ai/cli/0.8.22/cloudfleet_linux_arm64.zip"
-      sha256 "cd8f7c19e10813833b86e12fb37ab9b3541f9d909523401529cdaefac9df9adb"
-      def install
+      url "https://downloads.cloudfleet.ai/cli/0.8.23/cloudfleet_linux_arm64.zip"
+      sha256 "4172a620ce5a66b8b7f7ad0aeeeb7133ee7a32ce8db9a2dc1e9cf46ee063b86a"
+      define_method(:install) do
         bin.install "cloudfleet" => "cloudfleet"
 
         # Docker credential helper symlink
