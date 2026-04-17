@@ -11,7 +11,7 @@ class CloudfleetCli < Formula
 
   on_macos do
     url "https://downloads.cloudfleet.ai/cli/0.8.31/cloudfleet_darwin_all.zip"
-    sha256 "2ad5337e7b36ec54e382a7afe017014b5f8e8afeea945c5c24ed460eb180a719"
+    sha256 "07fb082ef9f81b007dfcd2834d49740f843dc67500eec2941cdf717be1a7f621"
 
     define_method(:install) do
       bin.install "cloudfleet" => "cloudfleet"
@@ -32,7 +32,7 @@ class CloudfleetCli < Formula
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
       url "https://downloads.cloudfleet.ai/cli/0.8.31/cloudfleet_linux_amd64.zip"
-      sha256 "f766d648e089f15281beabc82d6756d77ce4a68ed370f9c2e4aac733bf4a18eb"
+      sha256 "53ec6a0a3fb775d3b68e96f3884e85e4a0efb2730adcd6691e9404f00e0858b7"
       define_method(:install) do
         bin.install "cloudfleet" => "cloudfleet"
 
@@ -50,7 +50,7 @@ class CloudfleetCli < Formula
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
       url "https://downloads.cloudfleet.ai/cli/0.8.31/cloudfleet_linux_arm64.zip"
-      sha256 "20ee6548cd29a0b565c4b6abdffe09bd20c8bf3e4d5931763744747d5c74526e"
+      sha256 "741fcb1ab2551ab154bba924dcd608bc00f4eccad2c6dda0ae21a8e32b010a49"
       define_method(:install) do
         bin.install "cloudfleet" => "cloudfleet"
 
