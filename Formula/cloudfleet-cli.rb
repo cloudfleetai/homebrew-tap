@@ -11,7 +11,7 @@ class CloudfleetCli < Formula
 
   on_macos do
     url "https://downloads.cloudfleet.ai/cli/1.4.0/cloudfleet_darwin_all.zip"
-    sha256 "0763e7773d3f2cbfc5aff9389251ac12b4942b891ee9af38b400fe990131fe08"
+    sha256 "01fda9d8fac1f377702355e724d5f221bfb1f6dad35d29fe2feecf0b0a949eb8"
 
     define_method(:install) do
       bin.install "cloudfleet" => "cloudfleet"
